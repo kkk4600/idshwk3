@@ -7,11 +7,11 @@ event http_header(c:connection,is_orig:bool,name:string,value:string)
 local flag=0; 
 if (name=="USER-AGENT"){
 for(s in useragent){ 
-if (s==value) flag=1;
+if (s==to_lower(value)) flag=1;
 }
 if (flag==0) {
 my_count+=1;
-add useragent[value];
+add useragent[to_lower(value)];
 }
 }
 ipaddr=c$id$orig_h;
